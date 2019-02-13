@@ -22,7 +22,8 @@ SOURCES += \
     ViewManager/mainviewmngr.cpp \
     Model/provider.cpp \
     Model/settings.cpp \
-    utils.cpp
+    utils.cpp \
+    Model/instrument.cpp
 
 RESOURCES += qml.qrc
 
@@ -43,6 +44,7 @@ HEADERS += \
     propetyhelper.h \
     Model/provider.h \
     Model/settings.h \
-    utils.h
+    utils.h \
+    Model/instrument.h
 
 DISTFILES +=

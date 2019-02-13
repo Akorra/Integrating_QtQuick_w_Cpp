@@ -19,14 +19,14 @@ class MainViewMngr : public QObject
     //Refactoring on a Q_PROPERTY allows to generate the code necessary for itself (better to use AUTO PROPERTY)
     AUTO_PROPERTY(double, distance)
     AUTO_PROPERTY(double, velocity)
-    AUTO_PROPERTY(double, distancePreset1)
-    AUTO_PROPERTY(double, distancePreset2)
-    AUTO_PROPERTY(double, distancePreset3)
-    AUTO_PROPERTY(double, distancePreset4)
-    AUTO_PROPERTY(double, velocityPreset1)
-    AUTO_PROPERTY(double, velocityPreset2)
-    AUTO_PROPERTY(double, velocityPreset3)
-    AUTO_PROPERTY(double, velocityPreset4)
+    READONLY_PROPERTY(double, distancePreset1)
+    READONLY_PROPERTY(double, distancePreset2)
+    READONLY_PROPERTY(double, distancePreset3)
+    READONLY_PROPERTY(double, distancePreset4)
+    READONLY_PROPERTY(double, velocityPreset1)
+    READONLY_PROPERTY(double, velocityPreset2)
+    READONLY_PROPERTY(double, velocityPreset3)
+    READONLY_PROPERTY(double, velocityPreset4)
 
 public:
     explicit MainViewMngr(QObject *parent=nullptr);
@@ -56,7 +56,7 @@ private:
     //double m_someValue;
 
 private slots:
-    void debugPowerOn(bool value);
+    //void debugPowerOn(bool value);
 };
 
 #endif // MAINVIEWMNGR_H
