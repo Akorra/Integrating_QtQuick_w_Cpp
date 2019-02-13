@@ -772,7 +772,8 @@ qrc_qml.cpp: ../ARS/qml.qrc \
 		../ARS/images/knob.png \
 		../ARS/images/preset_up.png \
 		../ARS/images/power_on.png \
-		../ARS/images/TextBorder.png
+		../ARS/images/TextBorder.png \
+		../ARS/json/settings.json
 	/Users/akorra/Qt/5.12.1/clang_64/bin/rcc -name qml ../ARS/qml.qrc -o qrc_qml.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -804,8 +805,6 @@ moc_mainviewmngr.cpp: ../ARS/ViewManager/mainviewmngr.h \
 moc_settings.cpp: ../ARS/Model/settings.h \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QStringListModel \
-		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qstringlistmodel.h \
 		moc_predefs.h \
 		../../../../Qt/5.12.1/clang_64/bin/moc
 	/Users/akorra/Qt/5.12.1/clang_64/bin/moc $(DEFINES) --include /Users/akorra/Repos/GitHub/Integrating_QtQuick_w_Cpp/build-ARS-Desktop_Qt_5_12_1_clang_64bit-Debug/moc_predefs.h -I/Users/akorra/Qt/5.12.1/clang_64/mkspecs/macx-clang -I/Users/akorra/Repos/GitHub/Integrating_QtQuick_w_Cpp/ARS -I/Users/akorra/Qt/5.12.1/clang_64/lib/QtQuick.framework/Headers -I/Users/akorra/Qt/5.12.1/clang_64/lib/QtGui.framework/Headers -I/Users/akorra/Qt/5.12.1/clang_64/lib/QtQml.framework/Headers -I/Users/akorra/Qt/5.12.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/akorra/Qt/5.12.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/akorra/Qt/5.12.1/clang_64/lib ../ARS/Model/settings.h -o moc_settings.cpp
@@ -845,7 +844,9 @@ startup.o: ../ARS/startup.cpp ../ARS/startup.h \
 		../ARS/ViewManager/mainviewmngr.h \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		../ARS/propetyhelper.h
+		../ARS/propetyhelper.h \
+		../ARS/Model/provider.h \
+		../ARS/Model/settings.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o startup.o ../ARS/startup.cpp
 
 mainviewmngr.o: ../ARS/ViewManager/mainviewmngr.cpp ../ARS/ViewManager/mainviewmngr.h \
@@ -857,19 +858,17 @@ mainviewmngr.o: ../ARS/ViewManager/mainviewmngr.cpp ../ARS/ViewManager/mainviewm
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainviewmngr.o ../ARS/ViewManager/mainviewmngr.cpp
 
 provider.o: ../ARS/Model/provider.cpp ../ARS/Model/provider.h \
+		../ARS/Model/settings.h \
+		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QStandardPaths \
-		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qstandardpaths.h \
-		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QDir \
-		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qdir.h
+		../ARS/utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o provider.o ../ARS/Model/provider.cpp
 
 settings.o: ../ARS/Model/settings.cpp ../ARS/Model/settings.h \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QStringListModel \
-		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qstringlistmodel.h \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QDir \
@@ -882,7 +881,11 @@ settings.o: ../ARS/Model/settings.cpp ../ARS/Model/settings.h \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qjsonobject.h \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QJsonDocument \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QJsonArray \
-		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qjsonarray.h
+		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QStringListModel \
+		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qstringlistmodel.h \
+		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QStandardPaths \
+		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qstandardpaths.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o settings.o ../ARS/Model/settings.cpp
 
 utils.o: ../ARS/utils.cpp ../ARS/utils.h \

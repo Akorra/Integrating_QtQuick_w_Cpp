@@ -6,6 +6,8 @@
 
 #include "propetyhelper.h"
 
+class Settings;
+
 class MainViewMngr : public QObject
 {
     Q_OBJECT
@@ -15,6 +17,16 @@ class MainViewMngr : public QObject
     AUTO_PROPERTY(bool, powerOn)
     //Q_PROPERTY(double someValue READ someValue WRITE setSomeValue NOTIFY someValueChanged)
     //Refactoring on a Q_PROPERTY allows to generate the code necessary for itself (better to use AUTO PROPERTY)
+    AUTO_PROPERTY(double, distance)
+    AUTO_PROPERTY(double, velocity)
+    AUTO_PROPERTY(double, distancePreset1)
+    AUTO_PROPERTY(double, distancePreset2)
+    AUTO_PROPERTY(double, distancePreset3)
+    AUTO_PROPERTY(double, distancePreset4)
+    AUTO_PROPERTY(double, velocityPreset1)
+    AUTO_PROPERTY(double, velocityPreset2)
+    AUTO_PROPERTY(double, velocityPreset3)
+    AUTO_PROPERTY(double, velocityPreset4)
 
 public:
     explicit MainViewMngr(QObject *parent=nullptr);
@@ -35,7 +47,7 @@ public:
 
 //signals:
 //    void someValueChanged(double someValue);
-
+    void Initialize(const Settings& config);
 private:
     //QString m_appName;
     explicit MainViewMngr(const MainViewMngr& rhs) = delete;

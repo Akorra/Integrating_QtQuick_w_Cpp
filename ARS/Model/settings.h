@@ -11,14 +11,12 @@ QT_FORWARD_DECLARE_CLASS(QJsonObject)
 class QFile;
 class QDir;
 
-namespace Ps{
-    typedef std::pair<QJsonObject, QJsonParseError> JsonObjErrPair;
+typedef std::pair<QJsonObject, QJsonParseError> JsonObjErrPair;
 
-    class Settings : public QObject{
-        Q_OBJECT
+class Settings : public QObject{
+    Q_OBJECT
     public:
         explicit Settings(QObject *parent, QString filename);
-        ~Settings();
         void ParseJsonData();
         QString getApplicationName() const {return m_applicationName;}
         QString getAppShortName() const {return m_appShortName;}
@@ -91,9 +89,6 @@ namespace Ps{
         void WriteDefaultsToStdConfigFile(QFile &stdConfigFile, const QString &settings);
         void ShowJsonParseError(const QJsonParseError &json_parse_error);
         QStringList getCommandsAsStringList() const;
-
-
-    };
-}
+};
 
 #endif // SETTINGS_H

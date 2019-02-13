@@ -14,6 +14,7 @@
         <file>KnobControl.qml</file>
         <file>Knob.qml</file>
         <file>PresetButton.qml</file>
+        <file>json/settings.json</file>
     </qresource>
     <qresource prefix="/json"/>
 </RCC>

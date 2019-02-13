@@ -3,15 +3,13 @@
 #include <QString>
 #include "utils.h"
 
-namespace Ps {
-    static QString SETTINGS_FILE = QStringLiteral("settings.json");
+static QString SETTINGS_FILE = QStringLiteral("settings.json");
 
-    std::unique_ptr<Settings> Provider::m_instanceSettings=nullptr;
+std::unique_ptr<Settings> Provider::m_instanceSettings=nullptr;
 
-    Settings& Provider::GetSettingsAsSingleton(){
-        if(m_instanceSettings == nullptr){
-            m_instanceSettings = Utils::make_unique<Settings>(nullptr, SETTINGS_FILE);
-        }
-        return *m_instanceSettings;
+Settings& Provider::GetSettingsAsSingleton(){
+    if(m_instanceSettings == nullptr){
+        m_instanceSettings = Utils::make_unique<Settings>(nullptr, SETTINGS_FILE);
     }
+    return *m_instanceSettings;
 }

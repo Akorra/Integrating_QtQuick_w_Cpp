@@ -20,29 +20,28 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_Ps__Settings_t {
+struct qt_meta_stringdata_Settings_t {
     QByteArrayData data[4];
-    char stringdata0[42];
+    char stringdata0[38];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_Ps__Settings_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_Settings_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_Ps__Settings_t qt_meta_stringdata_Ps__Settings = {
+static const qt_meta_stringdata_Settings_t qt_meta_stringdata_Settings = {
     {
-QT_MOC_LITERAL(0, 0, 12), // "Ps::Settings"
-QT_MOC_LITERAL(1, 13, 19), // "NotifyStatusMessage"
-QT_MOC_LITERAL(2, 33, 0), // ""
-QT_MOC_LITERAL(3, 34, 7) // "message"
+QT_MOC_LITERAL(0, 0, 8), // "Settings"
+QT_MOC_LITERAL(1, 9, 19), // "NotifyStatusMessage"
+QT_MOC_LITERAL(2, 29, 0), // ""
+QT_MOC_LITERAL(3, 30, 7) // "message"
 
     },
-    "Ps::Settings\0NotifyStatusMessage\0\0"
-    "message"
+    "Settings\0NotifyStatusMessage\0\0message"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_Ps__Settings[] = {
+static const uint qt_meta_data_Settings[] = {
 
  // content:
        8,       // revision
@@ -64,7 +63,7 @@ static const uint qt_meta_data_Ps__Settings[] = {
        0        // eod
 };
 
-void Ps::Settings::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Settings::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         auto *_t = static_cast<Settings *>(_o);
@@ -85,30 +84,30 @@ void Ps::Settings::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
     }
 }
 
-QT_INIT_METAOBJECT const QMetaObject Ps::Settings::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject Settings::staticMetaObject = { {
     &QObject::staticMetaObject,
-    qt_meta_stringdata_Ps__Settings.data,
-    qt_meta_data_Ps__Settings,
+    qt_meta_stringdata_Settings.data,
+    qt_meta_data_Settings,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *Ps::Settings::metaObject() const
+const QMetaObject *Settings::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Ps::Settings::qt_metacast(const char *_clname)
+void *Settings::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_Ps__Settings.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_Settings.stringdata0))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int Ps::Settings::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Settings::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -126,7 +125,7 @@ int Ps::Settings::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Ps::Settings::NotifyStatusMessage(QString _t1)
+void Settings::NotifyStatusMessage(QString _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

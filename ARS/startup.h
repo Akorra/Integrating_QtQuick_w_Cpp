@@ -6,6 +6,7 @@
 
 class QQmlApplicationEngine;
 class MainViewMngr;
+class Settings;
 
 class Startup : public QObject
 {
@@ -15,6 +16,7 @@ public:
 private:
     QQmlApplicationEngine& m_engine;
     MainViewMngr& m_mainViewMngr;
+    Settings& m_settings;
 
     explicit Startup(const Startup& rhs) = delete;
     Startup& operator= (const Startup& rhs) = delete;
