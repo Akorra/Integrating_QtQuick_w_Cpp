@@ -1,7 +1,3 @@
-TEMPLATE = app
-VERSION = $$system(hg parents --template '{latesttag}.{latesttagdistance}')
-DEFINES += APP_VER=\\\"$$VERSION\\\"
-
 QT += quick
 CONFIG += c++11
 
@@ -17,14 +13,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp \
-    startup.cpp \
-    ViewManager/mainviewmngr.cpp \
-    Model/provider.cpp \
-    Model/settings.cpp \
-    utils.cpp \
-    Model/instrument.cpp \
-    Model/connector.cpp
+        main.cpp
 
 RESOURCES += qml.qrc
 
@@ -38,17 +27,3 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-HEADERS += \
-    startup.h \
-    ViewManager/mainviewmngr.h \
-    propetyhelper.h \
-    Model/provider.h \
-    Model/settings.h \
-    utils.h \
-    Model/instrument.h \
-    Model/connector.h
-
-# RC_ICONS = sampleicon.ico
-# RC_FILE = arsApp.rc
-DISTFILES +=
