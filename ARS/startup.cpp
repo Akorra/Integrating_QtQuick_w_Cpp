@@ -1,6 +1,8 @@
 #include "startup.h"
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QObject>
+#include <QThread>
 #include "ViewManager/mainviewmngr.h"
 #include "Model/provider.h"
 #include "Model/settings.h"
@@ -10,16 +12,22 @@ Startup::Startup(QObject *parent) : QObject(parent),
                                     m_engine(*new QQmlApplicationEngine),
                                     m_mainViewMngr(*new MainViewMngr()),
                                     m_settings(Provider::GetSettingsAsSingleton()),
-                                    m_instrument(* new Instrument(this))
+                                    m_instrument(* new Instrument(this, m_settings, Provider::GetConnectorForSingleUse(), * new QThread()))
 {
     m_settings.ParseJsonData();
     m_mainViewMngr.Initialize(m_settings);
     auto root_context = m_engine.rootContext();
     root_context->setContextProperty("MainViewMgr", &m_mainViewMngr);
     m_engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+
+    WireMainViewMgrToInstrument();
+    m_instrument.Initialize();
+
 }
 
 void Startup::WireMainViewMgrToInstrument()
 {
-    connect(m_mainViewMngr, &MainViewMngr::powerOnChanged, &m_instrument, &Instrument::onPowerChanged);
+    connect(&m_mainViewMngr, &MainViewMngr::powerOnChanged, &m_instrument, &Instrument::onPowerChanged);
+    connect(&m_mainViewMngr, &MainViewMngr::velocityChanged, &m_instrument, &Instrument::onVelocityChanged);
+    connect(&m_mainViewMngr, &MainViewMngr::distanceChanged, &m_instrument, &Instrument::onDistanceChanged);
 }

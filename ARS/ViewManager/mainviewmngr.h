@@ -48,6 +48,8 @@ public:
 //signals:
 //    void someValueChanged(double someValue);
     void Initialize(const Settings& config);
+
+
 private:
     //QString m_appName;
     explicit MainViewMngr(const MainViewMngr& rhs) = delete;

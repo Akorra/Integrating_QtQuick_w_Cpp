@@ -1,12 +1,26 @@
 #include "instrument.h"
 #include "utils.h"
 #include <QDebug>
+#include <QThread>
 
-Instrument::Instrument(QObject *parent) : QObject(parent), m_isConnected(false){}
+Instrument::Instrument(QObject *parent,
+                       Settings& config,
+                       Connector& conn,
+                       QThread& thread) :
+    QObject(parent),
+    m_isConnected(false),
+    m_thread(thread),
+    m_settings(config),
+    m_connector(conn){}
 
 Instrument::~Instrument()
 {
     Utils::DestructorMsg(this);
+}
+
+void Instrument::Initialize(){
+    //Fake making a TCP connection
+    QThread::msleep(1000);
 }
 
 void Instrument::EnableTestMode(){

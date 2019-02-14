@@ -23,7 +23,8 @@ SOURCES += \
     Model/provider.cpp \
     Model/settings.cpp \
     utils.cpp \
-    Model/instrument.cpp
+    Model/instrument.cpp \
+    Model/connector.cpp
 
 RESOURCES += qml.qrc
 
@@ -45,6 +46,7 @@ HEADERS += \
     Model/provider.h \
     Model/settings.h \
     utils.h \
-    Model/instrument.h
+    Model/instrument.h \
+    Model/connector.h
 
 DISTFILES +=

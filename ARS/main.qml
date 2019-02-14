@@ -30,6 +30,7 @@ ApplicationWindow {
                                MainViewMgr.velocityPreset2,
                                MainViewMgr.velocityPreset3,
                                MainViewMgr.velocityPreset4]
+
     property var distances : [MainViewMgr.distancePreset1,
                               MainViewMgr.distancePreset2,
                               MainViewMgr.distancePreset3,
@@ -64,7 +65,6 @@ ApplicationWindow {
                 right: parent.right
                 leftMargin: rowLeftMargin
             }
-
             RfPower{}
             KnobControl{
                 id: velocityId
