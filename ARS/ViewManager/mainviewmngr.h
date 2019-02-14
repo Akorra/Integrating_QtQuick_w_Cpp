@@ -28,6 +28,16 @@ class MainViewMngr : public QObject
     READONLY_PROPERTY(double, velocityPreset3)
     READONLY_PROPERTY(double, velocityPreset4)
 
+    AUTO_PROPERTY(bool, feedbackAreaVisible)
+    AUTO_PROPERTY(QString, feedbackMessage)
+    AUTO_PROPERTY(bool, feedbackOkButtonVisible)
+    AUTO_PROPERTY(int, feedbackProgress)
+    AUTO_PROPERTY(bool, instrumentControlEnabled)
+
+    public slots:
+        void onStatusMessageChanged(const QString& msg);
+        void onInstrumentInitializationDone(bool value);
+
 public:
     explicit MainViewMngr(QObject *parent=nullptr);
     //QString appName() const {return m_appName;}

@@ -15,6 +15,9 @@
         <file>Knob.qml</file>
         <file>PresetButton.qml</file>
         <file>json/settings.json</file>
+        <file>FeedBack.qml</file>
+        <file>images/okdown.png</file>
+        <file>images/okup.png</file>
     </qresource>
     <qresource prefix="/json"/>
 </RCC>

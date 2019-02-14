@@ -15,6 +15,8 @@ MainViewMngr::MainViewMngr(QObject *parent) : QObject(parent){
         velocityPreset2(0);
         velocityPreset3(0);
         velocityPreset4(0);
+        feedbackAreaVisible(true);
+        feedbackMessage("System Initializing...");
 }
 
 void MainViewMngr::Initialize(const Settings &config){
@@ -41,3 +43,13 @@ void MainViewMngr::Initialize(const Settings &config){
 //void MainViewMngr::debugVelocityChanged(double value){
 //    std::cout <<"In debugVelocityChanged with value: " << value << std::endl;
 //}
+
+void MainViewMngr::onStatusMessageChanged(const QString &msg)
+{
+
+}
+
+void MainViewMngr::onInstrumentInitializationDone(bool value)
+{
+
+}

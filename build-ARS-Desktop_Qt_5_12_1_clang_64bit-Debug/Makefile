@@ -772,6 +772,7 @@ compiler_rcc_clean:
 qrc_qml.cpp: ../ARS/qml.qrc \
 		../../../../Qt/5.12.1/clang_64/bin/rcc \
 		../ARS/Knob.qml \
+		../ARS/FeedBack.qml \
 		../ARS/PresetButton.qml \
 		../ARS/RfPower.qml \
 		../ARS/Header.qml \
@@ -784,7 +785,9 @@ qrc_qml.cpp: ../ARS/qml.qrc \
 		../ARS/images/knob.png \
 		../ARS/images/preset_up.png \
 		../ARS/images/power_on.png \
+		../ARS/images/okup.png \
 		../ARS/images/TextBorder.png \
+		../ARS/images/okdown.png \
 		../ARS/json/settings.json
 	/Users/akorra/Qt/5.12.1/clang_64/bin/rcc -name qml ../ARS/qml.qrc -o qrc_qml.cpp
 
@@ -888,9 +891,10 @@ mainviewmngr.o: ../ARS/ViewManager/mainviewmngr.cpp ../ARS/ViewManager/mainviewm
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainviewmngr.o ../ARS/ViewManager/mainviewmngr.cpp
 
 provider.o: ../ARS/Model/provider.cpp ../ARS/Model/provider.h \
-		../ARS/Model/settings.h \
+		../ARS/Model/connector.h \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
+		../ARS/Model/settings.h \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../ARS/utils.h
@@ -931,6 +935,8 @@ instrument.o: ../ARS/Model/instrument.cpp ../ARS/Model/instrument.h \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../ARS/utils.h \
+		../ARS/Model/connector.h \
+		../ARS/Model/settings.h \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../../Qt/5.12.1/clang_64/lib/QtCore.framework/Headers/QThread \

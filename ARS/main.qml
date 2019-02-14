@@ -52,6 +52,7 @@ ApplicationWindow {
         Header{
             id:headerId
         }
+        FeedBack{}
 
         //----- Controls Area -----
         //Controls Top Row - power button and 2 knobs

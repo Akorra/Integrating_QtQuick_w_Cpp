@@ -1,7 +1,10 @@
 #include "instrument.h"
 #include "utils.h"
+#include "Model/connector.h"
+#include "Model/settings.h"
 #include <QDebug>
 #include <QThread>
+#include <memory>
 
 Instrument::Instrument(QObject *parent,
                        Settings& config,
@@ -20,7 +23,7 @@ Instrument::~Instrument()
 
 void Instrument::Initialize(){
     //Fake making a TCP connection
-    QThread::msleep(1000);
+    InitWithConnector();
 }
 
 void Instrument::EnableTestMode(){
@@ -39,6 +42,21 @@ void Instrument::onVelocityChanged(double value){
 void Instrument::onPowerChanged(bool value)
 {
     WriteRfPower(value);
+}
+
+void Instrument::onConnectionDone(bool value)
+{
+    m_isConnected = value;
+    if(m_isConnected) SetDefaultValues();
+    emit NotifyInitializationDone(value);
+    m_thread.quit();
+    m_thread.wait();
+    qDebug() << "Connection has completed.";
+}
+
+void Instrument::onConnectorStatusChanged(const QString &msg)
+{
+    emit NotifyStatusUpdate(msg);
 }
 
 void Instrument::WriteRfPower(bool value)
@@ -66,6 +84,22 @@ void Instrument::WriteDistance(double distanceMeters)
     }else{
         qDebug() << "Distance: " << distanceMeters;
     }
+}
+
+void Instrument::InitWithConnector()
+{
+   m_connector.moveToThread(&m_thread);
+   connect(&m_thread, &QThread::started, &m_connector, &Connector::onStart);
+   connect(&m_connector, &Connector::notifyDone, this, &Instrument::onConnectionDone);
+   connect(&m_connector, &Connector::notifyMessage, this, &Instrument::onConnectorStatusChanged);
+   m_thread.start();
+}
+
+void Instrument::SetDefaultValues()
+{
+    WriteRfPower(m_settings.getInitialPowerState());
+    WriteDistance(m_settings.getInitialDistanceM());
+    WriteSpeed(m_settings.getInitialSpeedKph());
 }
 
 

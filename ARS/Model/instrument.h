@@ -39,7 +39,7 @@ private:
     void WriteRfPower(bool value);
     void WriteSpeed(double speedKph);
     void WriteDistance(double distanceMeters);
-    void InitWithCOnnector();
+    void InitWithConnector();
     void SetDefaultValues();
 
     explicit Instrument(const Instrument& rhs) = delete;
